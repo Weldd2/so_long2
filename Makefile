@@ -10,7 +10,11 @@ FTPRINTF = $(PRINTF_DIR)/libftprintf.a
 MLX42_LINUX = MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
 MLX42_MAC = MLX42/build/libmlx42.a -Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.9/lib/" -framework Cocoa -framework OpenGL -framework IOKit
 
-SRC = main.c validate_map.c map_utils.c map_structure.c move.c resoudre.c resoudre2.c
+SRC = so_long.c \
+	srcs/validate/validate.c srcs/validate/file_exists.c srcs/validate/is_closed.c \
+	srcs/validate/is_rectangle.c srcs/validate/is_finishable.c \
+	srcs/utils/utils.c \
+	srcs/model/map/map.c srcs/model/map/utils.c
 OBJ = $(SRC:.c=.o)
 
 #change in CMakeLists.txt --> cmake_minimum_required (VERSION 3.16.0)
@@ -31,7 +35,7 @@ submodule :
 	git submodule update
 
 mlx_build :
-	sed -i 's/^cmake_minimum_required (VERSION 3.18.0)/cmake_minimum_required (VERSION 3.16.0)/g' MLX42/CMakeLists.txt
+	# sed -i 's/^cmake_minimum_required (VERSION 3.18.0)/cmake_minimum_required (VERSION 3.16.0)/g' MLX42/CMakeLists.txt
 	cmake ./MLX42 -B ./MLX42/build
 	cmake --build ./MLX42/build -j4
 
