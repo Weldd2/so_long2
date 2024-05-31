@@ -6,7 +6,7 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 16:00:11 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/05/26 16:22:49 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/05/26 19:11:02 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	get_hauteur_largeur(char *filename, int *hauteur, int *largeur)
 	fd = open(filename, O_RDONLY);
 	line = gnl_and_trim(fd);
 	if (line != NULL)
-		*hauteur = (int)ft_strlen(line);
+		*largeur = (int)ft_strlen(line);
 	else
 		return (close(fd), E_ERR);
 	while (line != NULL)
@@ -30,6 +30,6 @@ int	get_hauteur_largeur(char *filename, int *hauteur, int *largeur)
 		ligne++;
 		line = gnl_and_trim(fd);
 	}
-	*largeur = ligne;
+	*hauteur = ligne;
 	return (close(fd), E_OK);
 }

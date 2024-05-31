@@ -6,7 +6,7 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:38:50 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/05/26 16:20:20 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/05/31 09:35:32 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,16 @@ typedef struct s_game
 
 typedef enum e_errno
 {
+	E_GLOBAL,
 	E_OPEN,
 	E_MAPEMPTY,
 	E_MAPWIDTH,
 	E_MAPEDGES,
-	E_FINISHABLE
+	E_FINISHABLE,
+	E_INVALID_CHAR,
+	E_COLLECTIBLE,
+	E_EXIT,
+	E_PLAYER,
 }	t_errno;
 
 typedef enum e_ok
@@ -72,11 +77,13 @@ extern t_errno	g_eno;
 
 // counter
 t_counter	*new_counter();
+t_ok		fill_counter(t_game **game);
 void		free_counter(t_counter *counter);
 
 // game
 t_game	*new_game(int hauteur, int largeur);
 void	free_game(t_game *game);
+int		ber_to_game(char *filename, t_game **game);
 
 // graphics
 t_graphics	*new_graphics(int hauteur, int largeur);
@@ -86,12 +93,14 @@ void		free_graphics(t_graphics *graph);
 t_map		*new_map(int hauteur, int largeur);
 void		free_map(t_map *map);
 int			get_hauteur_largeur(char *filename, int *hauteur, int *largeur);
-int			fill_map(char *filename, t_map *map);
+int			ber_to_map(int fd, char *filename, t_game **game);
+
 
 // player
 t_player	*new_player();
 void		free_player(t_player *player);
-void		set_player_coords(int x, int y);
+void		set_player_coords(t_player *player, int x, int y);
+void		fill_player(t_game **game);
 
 // UTILS
 
@@ -100,10 +109,10 @@ char	*gnl_and_trim(int fd);
 
 // VALIDATE
 
-int	validate(char *filename);
-int	file_exists(char *filename);
-int	is_rectangle(char *filename);
-int	is_closed(char *filename);
-int	is_finishable(char *filename);
+t_ok	validate(t_game *game);
+t_ok	is_rectangle(t_game *game);
+t_ok	is_closed(t_game *game);
+t_ok	is_finishable(t_game *game);
+t_ok	count_collectible(t_game *game);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 14:12:51 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/05/26 14:39:38 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/05/30 18:30:37 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,39 @@ t_counter	*new_counter()
 	t_counter	*counter;
 
 	counter = ft_calloc(sizeof(t_counter *), 1);
-	counter->c_count = -1;
-	counter->e_count = -1;
-	counter->p_count = -1;
+	counter->c_count = 0;
+	counter->e_count = 0;
+	counter->p_count = 0;
+	return (counter);
+}
+
+t_ok	fill_counter(t_game **game)
+{
+	t_counter	*counter;
+	int			i;
+	int			j;
+
+	counter = new_counter();
+	i = 0;
+	while (i < (*game)->map->hauteur)
+	{
+		j = 0;
+		while (j < (*game)->map->largeur)
+		{
+			if ((*game)->map->tiles[i][j] == 'P')
+				counter->p_count++;
+			else if ((*game)->map->tiles[i][j] == 'C')
+				counter->c_count++;
+			else if ((*game)->map->tiles[i][j] == 'E')
+				counter->e_count++;
+			else if ((*game)->map->tiles[i][j] != '0' && (*game)->map->tiles[i][j] != '1')
+				return (g_eno = E_INVALID_CHAR, E_ERR);
+			j++;
+		}
+		i++;
+	}
+	(*game)->counter = counter;
+	return (E_OK);
 }
 
 void	free_counter(t_counter *counter)

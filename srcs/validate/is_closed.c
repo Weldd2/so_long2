@@ -6,13 +6,13 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 15:00:08 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/05/26 16:04:11 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/05/30 17:42:36 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../include/so_long.h"
 
-static int	is_line_start_end_closed(char *line)
+static int	is_line_closed(char *line)
 {
 	int	len;
 	int	i;
@@ -30,30 +30,22 @@ static int	is_line_start_end_closed(char *line)
 	return (E_OK);
 }
 
-int	is_closed(char *filename)
+t_ok	is_closed(t_game *game)
 {
-	int		fd;
-	char	*line;
-	char	*tmp;
+	int	i;
 
-	fd = open(filename, O_RDONLY);
-	line = gnl_and_trim(fd);
-	if (line == NULL)
-		return (close(fd), E_ERR);
-	tmp = line;
-	if (is_line_start_end_closed(line) == E_ERR)
-		return (free(line), close(fd), E_ERR);
-	while (line != NULL)
+	i = 1;
+	if (is_line_closed(game->map->tiles[0]))
+		return (g_eno = E_MAPEDGES, E_ERR);
+	if (is_line_closed(game->map->tiles[game->map->hauteur - 1]))
+		return (g_eno = E_MAPEDGES, E_ERR);
+	while (i < game->map->hauteur)
 	{
-		line = gnl_and_trim(fd);
-		if (line != NULL)
-		{
-			if (!ft_str_start_with(line, "1") || !ft_str_end_with(line, "1"))
-				return (free(tmp), close(fd), E_ERR);
-			tmp = line;
-		}
+		if (game->map->tiles[i][0] != '1')
+			return (g_eno = E_MAPEDGES, E_ERR);
+		if (game->map->tiles[i][game->map->largeur - 1] != '1')
+			return (g_eno = E_MAPEDGES, E_ERR);
+		i++;
 	}
-	if (is_line_start_end_closed(tmp) == E_ERR)
-		return (free(tmp), close(fd), E_ERR);
-	return (free(line), close(fd), E_OK);
+	return (E_OK);
 }

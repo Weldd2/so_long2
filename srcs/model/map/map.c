@@ -6,7 +6,7 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:59:09 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/05/26 16:19:54 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/05/30 18:07:16 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,26 @@ t_map	*new_map(int hauteur, int largeur)
 	return (map);
 }
 
-int	fill_map(char *filename, t_map *map)
+int	ber_to_map(int fd, char *filename, t_game **game)
 {
-	int		fd;
-	int		x;
 	int		y;
+	int		nb_line;
 	char	*line;
-
+	
+	nb_line = wc_l(filename);
+	(*game)->map = ft_calloc(1, sizeof(t_map *));
+	(*game)->map->tiles = ft_calloc(nb_line + 1, sizeof(char *));
+	line = gnl_and_trim(fd);
+	(*game)->map->largeur = (int)ft_strlen(line);
 	y = 0;
-	fd = open(filename, O_RDONLY);
-	while (y < map->hauteur)
+	while (line != NULL)
 	{
-		x = 0;
+		(*game)->map->tiles[y] = ft_str_split_char(line);
 		line = gnl_and_trim(fd);
-		while (line != NULL && x < map->largeur)
-		{
-			map->tiles[y][x] = line[x];
-			x++;
-		}
 		y++;
 	}
-	return (free(line), close(fd), E_OK);
+	(*game)->map->hauteur = y;
+	return (E_OK);
 }
 
 void	free_map(t_map *map)
