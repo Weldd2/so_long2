@@ -6,7 +6,7 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:36:11 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 19:59:34 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 20:47:20 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ int	main(__attribute__((unused))int argc, __attribute__((unused)) char **argv)
 		return (g_eno = E_OPEN, printerr(), EXIT_FAILURE);
 	new_game(argv[1], &game);
 	if (validate(game) == E_ERR)
-		return (free_game(game), printerr(), EXIT_FAILURE);
+		return (mlx_terminate(game.graphics->mlx), free_game(game), printerr(), EXIT_FAILURE);
 	mlx_key_hook(game.graphics->mlx, &my_keyhook, &game);
 	mlx_loop(game.graphics->mlx);
 	t_exit(game);
