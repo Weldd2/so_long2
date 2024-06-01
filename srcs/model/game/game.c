@@ -22,6 +22,8 @@ t_ok	new_game(char *filename, t_game *game)
 		return (g_eno = E_OPEN, E_ERR);
 	nb_line = wc_l(filename);
 	new_map(fd, game, nb_line);
+	if (is_rectangle(*game) == E_ERR)
+		return (free_map(game->map), g_eno = E_MAPWIDTH, E_ERR);
 	if (new_counter(game) == E_ERR)
 		return (E_ERR);
 	new_player(game);

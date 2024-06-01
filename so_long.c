@@ -118,7 +118,8 @@ int	main(__attribute__((unused))int argc, __attribute__((unused)) char **argv)
 
 	if (argc != 2)
 		return (g_eno = E_OPEN, printerr(), EXIT_FAILURE);
-	new_game(argv[1], &game);
+	if (new_game(argv[1], &game) == E_ERR)
+		return (printerr(), EXIT_FAILURE);
 	if (validate(game) == E_ERR)
 		return (mlx_terminate(game.graphics->mlx), free_game(game), printerr(), EXIT_FAILURE);
 	mlx_key_hook(game.graphics->mlx, &my_keyhook, &game);
