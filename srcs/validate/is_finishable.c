@@ -6,7 +6,7 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 15:00:42 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/05/31 16:00:21 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 15:01:12 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_ok	is_valid(int x, int y, t_map *map, t_ok **visited)
 			 map->tiles[x][y] != '1' && !visited[x][y]);
 }
 
-t_ok bfs(t_game *game)
+t_ok	bfs(t_game game)
 {
 	int		directions[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 	int		i;
@@ -100,9 +100,9 @@ t_ok bfs(t_game *game)
 	int 	consumables_found;
 	t_ok	exit_found;
 
-	enqueue(&q, game->player->p_y, game->player->p_x);
-	visited = init_visited(game->map->hauteur, game->map->largeur);
-	visited[game->player->p_y][game->player->p_x] = true;
+	enqueue(&q, game.player->p_y, game.player->p_x);
+	visited = init_visited(game.map->hauteur, game.map->largeur);
+	visited[game.player->p_y][game.player->p_x] = true;
 	exit_found = false;
 	consumables_found = 0;
 	while (q.front != NULL)
@@ -110,47 +110,27 @@ t_ok bfs(t_game *game)
 		t_queue_node *node = dequeue(&q);
 		int x = node->x, y = node->y;
 		free(node);
-		if (game->map->tiles[x][y] == 'C')
+		if (game.map->tiles[x][y] == 'C')
 			consumables_found++;
-		if (game->map->tiles[x][y] == 'E')
+		if (game.map->tiles[x][y] == 'E')
 			exit_found = true;
 		i = 0;
 		while (i < 4)
 		{
 			int new_x = x + directions[i][0];
 			int new_y = y + directions[i][1];
-			if (is_valid(new_x, new_y, game->map, visited)) {
+			if (is_valid(new_x, new_y, game.map, visited)) {
 				visited[new_x][new_y] = true;
 				enqueue(&q, new_x, new_y);
 			}
 			i++;
 		}
 	}
-	free_visited(visited, game->map->hauteur);
-	return (consumables_found == game->counter->c_count && exit_found);
+	free_visited(visited, game.map->hauteur);
+	return (consumables_found == game.counter->c_count && exit_found);
 }
 
-static t_ok backtrack(t_game *game) {
-	if (bfs(game)) {
-		return (E_OK);
-	} else {
-		return (E_ERR);
-	}
-}
-
-t_ok	is_finishable(t_game *game)
+t_ok	is_finishable(t_game game)
 {
-	t_map		map;
-	t_player	p;
-	t_counter	counter;
-	t_ok		ret;
-
-	map = *(game->map);
-	p = *(game->player);
-	counter = *(game->counter);
-	ret = backtrack(game);
-	free_map(game->map);
-	free_player(game->player);
-	free_counter(game->counter);
-	return (game->map = &map, game->player = &p, game->counter = &counter, ret);
+	return (!bfs(game));
 }

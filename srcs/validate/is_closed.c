@@ -6,7 +6,7 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 15:00:08 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/05/30 17:42:36 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 15:00:22 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,20 +30,20 @@ static int	is_line_closed(char *line)
 	return (E_OK);
 }
 
-t_ok	is_closed(t_game *game)
+t_ok	is_closed(t_game game)
 {
 	int	i;
 
 	i = 1;
-	if (is_line_closed(game->map->tiles[0]))
+	if (is_line_closed(game.map->tiles[0]))
 		return (g_eno = E_MAPEDGES, E_ERR);
-	if (is_line_closed(game->map->tiles[game->map->hauteur - 1]))
+	if (is_line_closed(game.map->tiles[game.map->hauteur - 1]))
 		return (g_eno = E_MAPEDGES, E_ERR);
-	while (i < game->map->hauteur)
+	while (i < game.map->hauteur)
 	{
-		if (game->map->tiles[i][0] != '1')
+		if (game.map->tiles[i][0] != '1')
 			return (g_eno = E_MAPEDGES, E_ERR);
-		if (game->map->tiles[i][game->map->largeur - 1] != '1')
+		if (game.map->tiles[i][game.map->largeur - 1] != '1')
 			return (g_eno = E_MAPEDGES, E_ERR);
 		i++;
 	}

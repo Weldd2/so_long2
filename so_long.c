@@ -6,7 +6,7 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:36:11 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/05/31 09:35:00 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 15:18:12 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,26 @@ static void	printerr(void)
 		ft_printf("%s\n", errstr[g_eno]);
 }
 
-int	main(int argc, __attribute__((unused)) char **argv)
+void	print_map(t_game game)
 {
-	t_game	*game = ft_calloc(1, sizeof(t_game *));
+	for (int i = 0; i < game.map->hauteur; i++)
+	{
+		ft_printf("%s\n", game.map->tiles[i]);
+	}
+}
+
+
+int	main(__attribute__((unused))int argc, __attribute__((unused)) char **argv)
+{
+	t_game	game;
+
 	if (argc != 2)
 		return (g_eno = E_OPEN, printerr(), EXIT_FAILURE);
-	ber_to_game(argv[1], &game);
+	new_game(argv[1], &game);
 	if (validate(game) == E_ERR)
-		return (printerr(), EXIT_FAILURE);
+		return (free_game(game), printerr(), EXIT_FAILURE);
+	mlx_loop(game.graphics->mlx);
+	mlx_terminate(game.graphics->mlx);
+	free_game(game);
 	return (E_OK);
 }

@@ -6,7 +6,7 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:38:50 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/05/31 09:35:32 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 15:02:25 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_map
 
 typedef struct s_graphics
 {
-	mlx_image_t	*tiles_img[4];
+	mlx_image_t	*tiles_img[5];
 	mlx_t		*mlx;
 }	t_graphics;
 
@@ -76,31 +76,25 @@ extern t_errno	g_eno;
 // MODEL
 
 // counter
-t_counter	*new_counter();
-t_ok		fill_counter(t_game **game);
-void		free_counter(t_counter *counter);
+t_ok	new_counter(t_game *game);
+void	free_counter(t_counter *counter);
 
 // game
-t_game	*new_game(int hauteur, int largeur);
-void	free_game(t_game *game);
-int		ber_to_game(char *filename, t_game **game);
+t_ok	new_game(char *filename, t_game *game);
+void	free_game(t_game game);
 
 // graphics
-t_graphics	*new_graphics(int hauteur, int largeur);
-void		free_graphics(t_graphics *graph);
+void	new_graphics(t_game *game);
+void	free_graphics(t_graphics *graph);
 
 // map
-t_map		*new_map(int hauteur, int largeur);
-void		free_map(t_map *map);
-int			get_hauteur_largeur(char *filename, int *hauteur, int *largeur);
-int			ber_to_map(int fd, char *filename, t_game **game);
+t_ok	new_map(int fd, t_game *game, int nb_line);
+void	free_map(t_map *map);
 
 
 // player
-t_player	*new_player();
+void		new_player(t_game *game);
 void		free_player(t_player *player);
-void		set_player_coords(t_player *player, int x, int y);
-void		fill_player(t_game **game);
 
 // UTILS
 
@@ -109,10 +103,13 @@ char	*gnl_and_trim(int fd);
 
 // VALIDATE
 
-t_ok	validate(t_game *game);
-t_ok	is_rectangle(t_game *game);
-t_ok	is_closed(t_game *game);
-t_ok	is_finishable(t_game *game);
-t_ok	count_collectible(t_game *game);
+t_ok	validate(t_game game);
+t_ok	is_rectangle(t_game game);
+t_ok	is_closed(t_game game);
+t_ok	is_finishable(t_game game);
+t_ok	count_collectible(t_game game);
+
+
+void	print_map(t_game game);
 
 #endif
