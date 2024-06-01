@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphic.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 13:25:00 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 19:36:20 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 22:25:15 by amura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static t_ok	imgs_to_window(t_game game)
 	return (E_OK);
 }
 
-mlx_instance_t	*get_img_instance_by_position(t_game *game, int y, int x, t_bloc bloc)
+mlx_instance_t	*get_img_by_pos(t_game *game, int y, int x, t_bloc bloc)
 {
 	for (int j = 0; j < (int)game->graphics->tiles_img[bloc]->count; j++)
 	{

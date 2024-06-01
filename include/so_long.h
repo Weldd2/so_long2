@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:38:50 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 19:06:31 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 22:23:41 by amura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ void		free_player(t_player *player);
 // UTILS
 
 char	*gnl_and_trim(int fd);
+void	my_keyhook(mlx_key_data_t keydata,void* game);
+void	t_exit(t_game game);
 
 
 // VALIDATE

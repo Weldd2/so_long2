@@ -13,7 +13,7 @@ MLX42_MAC = MLX42/build/libmlx42.a -Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw
 SRC = so_long.c \
 	srcs/validate/validate.c srcs/validate/is_closed.c \
 	srcs/validate/is_rectangle.c srcs/validate/is_finishable.c srcs/validate/count_collectible.c\
-	srcs/utils/utils.c \
+	srcs/utils/utils.c srcs/utils/move.c \
 	srcs/model/map/map.c srcs/model/graphic/graphic.c srcs/model/map/utils.c  \
 	srcs/model/game/game.c srcs/model/counter/counter.c srcs/model/player/player.c
 OBJ = $(SRC:.c=.o)

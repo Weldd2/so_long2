@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 16:04:13 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 20:43:23 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 22:24:19 by amura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*gnl_and_trim(int fd)
 		if (!line)
 		{
 			free(tmp);
-			return NULL;
+			return (NULL);
 		}
 		free(tmp);
 	}
