@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:59:09 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 20:44:30 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 22:14:51 by amura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,10 @@ t_ok	new_map(int fd, t_game *game, int nb_line)
 	game->map = ft_calloc(1, sizeof(t_map));
 	game->map->tiles = ft_calloc(nb_line + 1, sizeof(char *));
 	line = gnl_and_trim(fd);
-	game->map->largeur = (int)ft_strlen(line);
+	if (line)
+		game->map->largeur = (int)ft_strlen(line);
+	else
+		return (E_ERR);
 	y = 0;
 	while (line != NULL)
 	{

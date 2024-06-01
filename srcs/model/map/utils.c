@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 16:00:11 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 20:44:46 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 22:13:16 by amura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int	get_hauteur_largeur(char *filename, int *hauteur, int *largeur)
 
 	ligne = 0;
 	fd = open(filename, O_RDONLY);
+	if (fd < 0)
+		return (E_ERR);
 	line = gnl_and_trim(fd);
 	if (line != NULL)
 		*largeur = (int)ft_strlen(line);
