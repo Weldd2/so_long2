@@ -6,7 +6,7 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:51:02 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 15:02:11 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 17:44:54 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_ok	new_game(char *filename, t_game *game)
 
 void	free_game(t_game game)
 {
-	free_graphics(game.graphics);
+	// free_graphics(game.graphics);
 	free_counter(game.counter);
 	free_map(game.map);
 	free_player(game.player);

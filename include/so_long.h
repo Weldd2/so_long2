@@ -6,7 +6,7 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:38:50 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 15:02:25 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 19:06:31 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,15 @@ typedef enum e_errno
 	E_PLAYER,
 }	t_errno;
 
+typedef enum e_bloc
+{
+	E_PLANCHE = 0,
+	E_BRIQUE = 1,
+	E_FLEUR = 2,
+	E_ECHELLE = 3,
+	E_TNT = 4
+}	t_bloc;
+
 typedef enum e_ok
 {
 	E_OK = 0,
@@ -86,6 +95,7 @@ void	free_game(t_game game);
 // graphics
 void	new_graphics(t_game *game);
 void	free_graphics(t_graphics *graph);
+mlx_instance_t	*get_img_instance_by_position(t_game *game, int y, int x, t_bloc bloc);
 
 // map
 t_ok	new_map(int fd, t_game *game, int nb_line);
