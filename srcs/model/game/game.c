@@ -27,13 +27,14 @@ t_ok	new_game(char *filename, t_game *game)
 	if (new_counter(game) == E_ERR)
 		return (E_ERR);
 	new_player(game);
+	if (validate(*game) == E_ERR)
+		return (free_game(*game), E_ERR);
 	new_graphics(game);
 	return (close(fd), E_OK);
 }
 
 void	free_game(t_game game)
 {
-	free_graphics(game.graphics);
 	free_counter(game.counter);
 	free_map(game.map);
 	free_player(game.player);

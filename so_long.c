@@ -43,8 +43,8 @@ void	print_map(t_game game)
 void	t_exit(t_game game)
 {
 	mlx_terminate(game.graphics->mlx);
+	free_graphics(game.graphics);
 	free_game(game);
-	printerr();
 	exit(EXIT_SUCCESS);
 }
 
@@ -120,8 +120,6 @@ int	main(__attribute__((unused))int argc, __attribute__((unused)) char **argv)
 		return (g_eno = E_OPEN, printerr(), EXIT_FAILURE);
 	if (new_game(argv[1], &game) == E_ERR)
 		return (printerr(), EXIT_FAILURE);
-	if (validate(game) == E_ERR)
-		return (mlx_terminate(game.graphics->mlx), free_game(game), printerr(), EXIT_FAILURE);
 	mlx_key_hook(game.graphics->mlx, &my_keyhook, &game);
 	mlx_loop(game.graphics->mlx);
 	t_exit(game);
