@@ -27,11 +27,12 @@ t_ok	new_map(int fd, t_game *game, int nb_line)
 	while (line != NULL)
 	{
 		game->map->tiles[y] = ft_str_split_char(line);
+		free(line);
 		line = gnl_and_trim(fd);
 		y++;
 	}
 	game->map->hauteur = y;
-	return (free(line), E_OK);
+	return (E_OK);
 }
 
 void	free_map(t_map *map)

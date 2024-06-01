@@ -110,5 +110,5 @@ void	new_graphics(t_game *game)
 
 void	free_graphics(t_graphics *graph)
 {
-	mlx_terminate(graph->mlx);
+	free(graph);
 }

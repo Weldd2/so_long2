@@ -47,7 +47,7 @@ $(FTPRINTF):
 	$(MAKE) -C $(PRINTF_DIR)
 
 $(NAME): $(OBJ)
-	$(MAKE) mac
+	$(MAKE) linux
 
 clean:
 	rm -f $(OBJ)

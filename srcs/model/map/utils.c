@@ -28,8 +28,9 @@ int	get_hauteur_largeur(char *filename, int *hauteur, int *largeur)
 	while (line != NULL)
 	{
 		ligne++;
+		free(line);
 		line = gnl_and_trim(fd);
 	}
 	*hauteur = ligne;
-	return (free(line), close(fd), E_OK);
+	return (close(fd), E_OK);
 }
