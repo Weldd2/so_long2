@@ -6,7 +6,7 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 16:00:11 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/05/26 19:11:02 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 20:44:46 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ int	get_hauteur_largeur(char *filename, int *hauteur, int *largeur)
 		line = gnl_and_trim(fd);
 	}
 	*hauteur = ligne;
-	return (close(fd), E_OK);
+	return (free(line), close(fd), E_OK);
 }

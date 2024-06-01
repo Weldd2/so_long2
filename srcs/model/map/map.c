@@ -6,7 +6,7 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:59:09 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 20:37:01 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 20:44:30 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_ok	new_map(int fd, t_game *game, int nb_line)
 		y++;
 	}
 	game->map->hauteur = y;
-	return (E_OK);
+	return (free(line), E_OK);
 }
 
 void	free_map(t_map *map)
