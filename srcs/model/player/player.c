@@ -6,7 +6,7 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 14:06:05 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 15:08:52 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 20:37:43 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	new_player(t_game *game)
 	int			i;
 	int			j;
 
-	player = ft_calloc(1, sizeof(t_player *));
+	player = ft_calloc(1, sizeof(t_player));
 	player->p_y = -1;
 	player->p_x = -1;
 	i = 0;

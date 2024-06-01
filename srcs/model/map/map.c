@@ -6,7 +6,7 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:59:09 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 15:03:09 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 20:37:01 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_ok	new_map(int fd, t_game *game, int nb_line)
 	
 	if (fd < 0)
 		return (E_ERR);
-	game->map = ft_calloc(1, sizeof(t_map *));
+	game->map = ft_calloc(1, sizeof(t_map));
 	game->map->tiles = ft_calloc(nb_line + 1, sizeof(char *));
 	line = gnl_and_trim(fd);
 	game->map->largeur = (int)ft_strlen(line);

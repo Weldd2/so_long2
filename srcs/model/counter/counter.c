@@ -6,7 +6,7 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 14:12:51 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 15:07:58 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 20:37:34 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_ok	new_counter(t_game *game)
 {
 	t_counter	*counter;
 
-	counter = ft_calloc(sizeof(t_counter *), 1);
+	counter = ft_calloc(sizeof(t_counter), 1);
 	counter->c_count = 0;
 	counter->e_count = 0;
 	counter->p_count = 0;
