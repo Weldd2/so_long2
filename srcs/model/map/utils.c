@@ -6,11 +6,11 @@
 /*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 16:00:11 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 22:13:16 by amura            ###   ########.fr       */
+/*   Updated: 2024/06/01 23:10:13 by amura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/so_long.h"
+#include "../../../so_long.h"
 
 int	get_hauteur_largeur(char *filename, int *hauteur, int *largeur)
 {

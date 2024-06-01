@@ -6,11 +6,11 @@
 /*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:51:02 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 22:11:20 by amura            ###   ########.fr       */
+/*   Updated: 2024/06/01 23:10:13 by amura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/so_long.h"
+#include "../../../so_long.h"
 
 t_ok	new_game(char *filename, t_game *game)
 {
@@ -39,4 +39,3 @@ void	free_game(t_game game)
 	free_map(game.map);
 	free_player(game.player);
 }
-

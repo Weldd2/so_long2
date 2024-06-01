@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 14:06:05 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 20:37:43 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 23:10:13 by amura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/so_long.h"
+#include "../../../so_long.h"
 
 void	new_player(t_game *game)
 {
@@ -43,4 +43,3 @@ void	free_player(t_player *player)
 {
 	free(player);
 }
-

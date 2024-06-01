@@ -6,11 +6,11 @@
 /*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 22:19:10 by amura             #+#    #+#             */
-/*   Updated: 2024/06/01 22:27:55 by amura            ###   ########.fr       */
+/*   Updated: 2024/06/01 23:10:13 by amura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../so_long.h"
 
 void	move_player(t_game *g, int dx, int dy, mlx_instance_t *instance)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   counter.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 14:12:51 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 20:37:34 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 23:10:13 by amura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/so_long.h"
+#include "../../../so_long.h"
 
 static t_ok	fill_counter(t_game *game, t_counter *counter)
 {
@@ -29,7 +29,8 @@ static t_ok	fill_counter(t_game *game, t_counter *counter)
 				counter->c_count++;
 			else if (game->map->tiles[i][j] == 'E')
 				counter->e_count++;
-			else if (game->map->tiles[i][j] != '0' && game->map->tiles[i][j] != '1')
+			else if (game->map->tiles[i][j] != '0'
+				&& game->map->tiles[i][j] != '1')
 				return (g_eno = E_INVALID_CHAR, E_ERR);
 			j++;
 		}

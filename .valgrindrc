@@ -1,0 +1,1 @@
+--suppressions=valgrind_files/mlx42.supp --track-origins=yes --show-leak-kinds=all --leak-check=full --keep-debuginfo=yes

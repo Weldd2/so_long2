@@ -6,17 +6,17 @@
 /*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:59:09 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 22:14:51 by amura            ###   ########.fr       */
+/*   Updated: 2024/06/01 23:10:13 by amura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../include/so_long.h"
+#include "../../../so_long.h"
 
 t_ok	new_map(int fd, t_game *game, int nb_line)
 {
 	int		y;
 	char	*line;
-	
+
 	if (fd < 0)
 		return (E_ERR);
 	game->map = ft_calloc(1, sizeof(t_map));
@@ -51,4 +51,3 @@ void	free_map(t_map *map)
 	free(map->tiles);
 	free(map);
 }
-

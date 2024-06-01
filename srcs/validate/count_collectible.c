@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   count_collectible.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 09:23:47 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 15:00:35 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 23:10:13 by amura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../so_long.h"
 
 t_ok	count_collectible(t_game game)
 {

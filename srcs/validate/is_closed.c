@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   is_closed.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
+/*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 15:00:08 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 15:00:22 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/01 23:10:13 by amura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/so_long.h"
+#include "../../so_long.h"
 
 static int	is_line_closed(char *line)
 {

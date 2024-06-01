@@ -6,15 +6,15 @@
 /*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:38:50 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 22:23:41 by amura            ###   ########.fr       */
+/*   Updated: 2024/06/01 23:10:48 by amura            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../MLX42/include/MLX42/MLX42.h"
-# include "../libft/libft.h"
+# include "MLX42/include/MLX42/MLX42.h"
+# include "libft/libft.h"
 # include <fcntl.h>
 
 typedef struct s_counter
@@ -80,6 +80,28 @@ typedef enum e_ok
 	E_ERR = 1
 }	t_ok;
 
+typedef struct s_queue_node
+{
+	int					x;
+	int					y;
+	struct s_queue_node	*next;
+}	t_queue_node;
+
+typedef struct s_queue
+{
+	t_queue_node	*front;
+	t_queue_node	*rear;
+}	t_queue;
+
+typedef struct
+{
+	int		directions[4][2];
+	t_ok	**visited;
+	t_queue	q;
+	int		consumables_found;
+	t_ok	exit_found;
+}	t_bfs_vars;
+
 extern t_errno	g_eno;
 
 // MODEL
@@ -95,7 +117,7 @@ void	free_game(t_game game);
 // graphics
 void	new_graphics(t_game *game);
 void	free_graphics(t_graphics *graph);
-mlx_instance_t	*get_img_instance_by_position(t_game *game, int y, int x, t_bloc bloc);
+mlx_instance_t	*get_img_by_pos(t_game *game, int y, int x, t_bloc bloc);
 
 // map
 t_ok	new_map(int fd, t_game *game, int nb_line);
@@ -112,7 +134,6 @@ char	*gnl_and_trim(int fd);
 void	my_keyhook(mlx_key_data_t keydata,void* game);
 void	t_exit(t_game game);
 
-
 // VALIDATE
 
 t_ok	validate(t_game game);
@@ -120,6 +141,11 @@ t_ok	is_rectangle(t_game game);
 t_ok	is_closed(t_game game);
 t_ok	is_finishable(t_game game);
 t_ok	count_collectible(t_game game);
+void	enqueue(t_queue *q, int x, int y);
+t_queue_node	*dequeue(t_queue *q);
+t_ok	**init_visited(int hauteur, int largeur);
+void	free_visited(t_ok **visited, int hauteur);
+t_ok	bfs(t_game game);
 
 
 void	print_map(t_game game);
