@@ -6,7 +6,7 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:38:50 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/02 11:05:20 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/02 11:08:19 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ typedef enum e_errno
 	E_PLAYER,
 }	t_errno;
 
+extern t_errno	g_eno;
+
 typedef enum e_bloc
 {
 	E_PLANCHE = 0,
@@ -101,8 +103,6 @@ typedef struct s_bfs_vars
 	int		consumables_found;
 	t_ok	exit_found;
 }	t_bfs_vars;
-
-extern t_errno	g_eno;
 
 // MODEL
 

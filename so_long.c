@@ -6,11 +6,13 @@
 /*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:36:11 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/02 11:06:42 by antoinemura      ###   ########.fr       */
+/*   Updated: 2024/06/02 11:08:26 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+t_errno	g_eno;
 
 static void	printerr(void)
 {
