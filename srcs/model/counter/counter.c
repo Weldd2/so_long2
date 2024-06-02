@@ -31,7 +31,7 @@ static t_ok	fill_counter(t_game *game, t_counter *counter)
 				counter->e_count++;
 			else if (game->map->tiles[i][j] != '0'
 				&& game->map->tiles[i][j] != '1')
-				return (g_eno = E_INVALID_CHAR, E_ERR);
+				return (free_counter(counter), g_eno = E_INVALID_CHAR, E_ERR);
 			j++;
 		}
 		i++;

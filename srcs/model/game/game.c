@@ -24,11 +24,15 @@ t_ok	new_game(char *filename, t_game *game)
 	new_map(fd, game, nb_line);
 	if (is_rectangle(*game) == E_ERR)
 		return (free_map(game->map), g_eno = E_MAPWIDTH, E_ERR);
+	if (is_closed(*game) == E_ERR)
+		return (free_map(game->map), g_eno = E_MAPWIDTH, E_ERR);
 	if (new_counter(game) == E_ERR)
-		return (E_ERR);
+		return (free_map(game->map), E_ERR);
 	new_player(game);
-	if (validate(*game) == E_ERR)
-		return (free_game(*game), E_ERR);
+	if (count_collectible(*game) == E_ERR)
+		return (free_game(*game),E_ERR);
+	if (is_finishable(*game) == E_ERR)
+		return (free_game(*game), g_eno = E_FINISHABLE, E_ERR);\
 	new_graphics(game);
 	return (close(fd), E_OK);
 }

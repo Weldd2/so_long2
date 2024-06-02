@@ -18,9 +18,6 @@ t_ok	validate(t_game game)
 		return (g_eno = E_MAPWIDTH, E_ERR);
 	if (is_closed(game) == E_ERR)
 		return (g_eno = E_MAPEDGES, E_ERR);
-	if (count_collectible(game) == E_ERR)
-		return (E_ERR);
-	if (is_finishable(game) == E_ERR)
-		return (g_eno = E_FINISHABLE, E_ERR);
+
 	return (E_OK);
 }
