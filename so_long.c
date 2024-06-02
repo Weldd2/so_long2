@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
+/*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:36:11 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 23:10:13 by amura            ###   ########.fr       */
+/*   Updated: 2024/06/02 11:06:42 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-t_errno				g_eno;
 
 static void	printerr(void)
 {
@@ -28,9 +26,11 @@ static void	printerr(void)
 		[E_EXIT] = "Map must have exactly one exit", \
 		[E_PLAYER] = "Map must have exactly one player"
 	};
+
 	if (errstr[g_eno])
 		ft_printf("%s\n", errstr[g_eno]);
 }
+
 void	t_exit(t_game game)
 {
 	mlx_terminate(game.graphics->mlx);
@@ -39,7 +39,7 @@ void	t_exit(t_game game)
 	exit(EXIT_SUCCESS);
 }
 
-int	main(__attribute__((unused))int argc, __attribute__((unused)) char **argv)
+int	main(int argc, char **argv)
 {
 	t_game	game;
 

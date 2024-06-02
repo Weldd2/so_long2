@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphic.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
+/*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 13:25:00 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 23:10:13 by amura            ###   ########.fr       */
+/*   Updated: 2024/06/02 10:56:16 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	set_images(t_graphics **graph)
 	(*graph)->tiles_img[E_TNT] = img;
 }
 
-static void	place_image(t_game *game, int x, int y, t_bloc img_type)
+void	place_image(t_game *game, int x, int y, t_bloc img_type)
 {
 	int32_t		instance;
 	int			z_index;
@@ -60,61 +60,16 @@ static void	place_image(t_game *game, int x, int y, t_bloc img_type)
 	game->graphics->tiles_img[img_type]->instances[instance].z = z_index;
 }
 
-static void	place_tile(t_game *game, int i, int j)
+void	place_tile(t_game *game, int i, int j)
 {
 	if (game->map->tiles[i][j] == '1')
-	{
 		place_image(game, j, i, E_BRIQUE);
-	}
 	else if (game->map->tiles[i][j] == 'C')
-	{
 		place_image(game, j, i, E_FLEUR);
-	}
 	else if (game->map->tiles[i][j] == 'E')
-	{
 		place_image(game, j, i, E_ECHELLE);
-	}
 	else if (game->map->tiles[i][j] == 'P')
-	{
 		place_image(game, j, i, E_TNT);
-	}
-}
-
-static t_ok	imgs_to_window(t_game game)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < game.map->hauteur)
-	{
-		j = 0;
-		while (j < game.map->largeur)
-		{
-			place_image(&game, j, i, E_PLANCHE);
-			place_tile(&game, i, j);
-			j++;
-		}
-		i++;
-	}
-	return (E_OK);
-}
-
-mlx_instance_t	*get_img_by_pos(t_game *game, int y, int x, t_bloc bloc)
-{
-	int	j;
-
-	j = 0;
-	while (j < (int)game->graphics->tiles_img[bloc]->count)
-	{
-		if (game->graphics->tiles_img[bloc]->instances[j].y - (y * 32) == 0
-			&& game->graphics->tiles_img[bloc]->instances[j].x - (x * 32) == 0)
-		{
-			return (&(game->graphics->tiles_img[bloc]->instances[j]));
-		}
-		j++;
-	}
-	return (NULL);
 }
 
 void	new_graphics(t_game *game)

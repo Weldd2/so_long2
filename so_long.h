@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
+/*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:38:50 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 23:10:48 by amura            ###   ########.fr       */
+/*   Updated: 2024/06/02 11:05:20 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ typedef struct s_queue
 	t_queue_node	*rear;
 }	t_queue;
 
-typedef struct
+typedef struct s_bfs_vars
 {
 	int		directions[4][2];
 	t_ok	**visited;
@@ -107,47 +107,45 @@ extern t_errno	g_eno;
 // MODEL
 
 // counter
-t_ok	new_counter(t_game *game);
-void	free_counter(t_counter *counter);
+t_ok			new_counter(t_game *game);
+void			free_counter(t_counter *counter);
 
 // game
-t_ok	new_game(char *filename, t_game *game);
-void	free_game(t_game game);
+t_ok			new_game(char *filename, t_game *game);
+void			free_game(t_game game);
 
 // graphics
-void	new_graphics(t_game *game);
-void	free_graphics(t_graphics *graph);
+void			new_graphics(t_game *game);
+void			free_graphics(t_graphics *graph);
+t_ok			imgs_to_window(t_game game);
 mlx_instance_t	*get_img_by_pos(t_game *game, int y, int x, t_bloc bloc);
+void			set_images(t_graphics **graph);
+void			place_image(t_game *game, int x, int y, t_bloc img_type);
+void			place_tile(t_game *game, int i, int j);
 
 // map
-t_ok	new_map(int fd, t_game *game, int nb_line);
-void	free_map(t_map *map);
-
+t_ok			new_map(int fd, t_game *game, int nb_line);
+void			free_map(t_map *map);
 
 // player
-void		new_player(t_game *game);
-void		free_player(t_player *player);
+void			new_player(t_game *game);
+void			free_player(t_player *player);
 
 // UTILS
 
-char	*gnl_and_trim(int fd);
-void	my_keyhook(mlx_key_data_t keydata,void* game);
-void	t_exit(t_game game);
+char			*gnl_and_trim(int fd);
+void			my_keyhook(mlx_key_data_t keydata, void *game);
+void			t_exit(t_game game);
 
 // VALIDATE
-
-t_ok	validate(t_game game);
-t_ok	is_rectangle(t_game game);
-t_ok	is_closed(t_game game);
-t_ok	is_finishable(t_game game);
-t_ok	count_collectible(t_game game);
-void	enqueue(t_queue *q, int x, int y);
+t_ok			is_rectangle(t_game game);
+t_ok			is_closed(t_game game);
+t_ok			is_finishable(t_game game);
+t_ok			count_collectible(t_game game);
+void			enqueue(t_queue *q, int x, int y);
 t_queue_node	*dequeue(t_queue *q);
-t_ok	**init_visited(int hauteur, int largeur);
-void	free_visited(t_ok **visited, int hauteur);
-t_ok	bfs(t_game game);
-
-
-void	print_map(t_game game);
+t_ok			**init_visited(int hauteur, int largeur);
+void			free_visited(t_ok **visited, int hauteur);
+t_ok			bfs(t_game game);
 
 #endif

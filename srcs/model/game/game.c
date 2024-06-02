@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amura <amura@student.42.fr>                +#+  +:+       +#+        */
+/*   By: antoinemura <antoinemura@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 12:51:02 by antoinemura       #+#    #+#             */
-/*   Updated: 2024/06/01 23:10:13 by amura            ###   ########.fr       */
+/*   Updated: 2024/06/02 10:50:31 by antoinemura      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ t_ok	new_game(char *filename, t_game *game)
 		return (free_map(game->map), E_ERR);
 	new_player(game);
 	if (count_collectible(*game) == E_ERR)
-		return (free_game(*game),E_ERR);
+		return (free_game(*game), E_ERR);
 	if (is_finishable(*game) == E_ERR)
-		return (free_game(*game), g_eno = E_FINISHABLE, E_ERR);\
+		return (free_game(*game), g_eno = E_FINISHABLE, E_ERR);
 	new_graphics(game);
 	return (close(fd), E_OK);
 }

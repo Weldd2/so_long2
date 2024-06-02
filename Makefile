@@ -11,9 +11,9 @@ MLX42_LINUX = MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
 MLX42_MAC = MLX42/build/libmlx42.a -Iinclude -lglfw -L"/opt/homebrew/Cellar/glfw/3.3.9/lib/" -framework Cocoa -framework OpenGL -framework IOKit
 
 SRC = so_long.c \
-	srcs/validate/validate.c srcs/validate/is_closed.c \
+	srcs/validate/is_closed.c \
 	srcs/validate/is_rectangle.c srcs/validate/is_finishable.c srcs/validate/count_collectible.c\
-	srcs/utils/utils.c srcs/utils/move.c srcs/validate/bfs.c\
+	srcs/utils/utils.c srcs/model/graphic/graphic_utils.c srcs/utils/move.c srcs/validate/bfs.c\
 	srcs/model/map/map.c srcs/model/graphic/graphic.c srcs/model/map/utils.c  \
 	srcs/model/game/game.c srcs/model/counter/counter.c srcs/model/player/player.c
 OBJ = $(SRC:.c=.o)
